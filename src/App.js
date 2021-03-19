@@ -9,7 +9,7 @@ import teamRoster from './components/TeamRoster';
 const roster = teamRoster;
 
 const App = () => {
-    const [player, setPlayer] = useState(roster)
+    const [player] = useState(roster)
     console.log('player list', player)
     
    
