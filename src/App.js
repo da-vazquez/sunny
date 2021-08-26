@@ -2,22 +2,23 @@ import React, {useState} from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Nav from './components/Nav';
-import LoginForm from './components/Login'
-import RegisterForm from './components/Register'
-import News from './components/News'
-import CommentBox from './components/Community'
-import RosterCard from './components/RosterCards'
-import teamRoster from './components/TeamRoster';
-import ContactForm from './components/Contact'
+
+//components
+import Nav from './components/Nav/Nav';
+import LoginForm from './components/Login/Login'
+import RegisterForm from './components/Register/Register'
+import News from './components/News/News'
+import CommentBox from './components/Community/Community'
+import CalendarContainer from './components/Calendar/Calendar';
+import RosterCard from './components/RosterCards/RosterCards'
+import teamRoster from './components/TeamRoster/TeamRoster';
+import ContactForm from './components/Contact/Contact'
 
 const roster = teamRoster;
 
 const App = () => {
     const [player] = useState(roster)
     console.log('player list', player)
-    
-   
   
   return (
     <Router>
@@ -25,7 +26,7 @@ const App = () => {
       <Nav />
       <Switch>
         <Route exact path='/' component={News} />
-        <Route path='/schedule' />
+        <Route path='/schedule' component={CalendarContainer}/>
         <Route path='/community' component={CommentBox}/>
         <Route path='/roster'>
           <RosterCard player={player}/>
@@ -35,7 +36,7 @@ const App = () => {
         <Route path='/contact' component={ContactForm}/>
       </Switch>
     </div>
-    </Router>
+  </Router>
   );
-}
+};
 export default App;

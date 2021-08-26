@@ -1,0 +1,34 @@
+.player-container li {
+  flex: 0 0 20%;
+  flex-direction: column;
+  height: 350px;
+  margin: 0 auto;
+  color: black;
+  list-style-type: none;
+  margin-bottom: 60px;
+  margin-right: 5px;
+  text-align: center;
+  border: none;
+  background-color: #2a054e;
+  border-radius: 15px;
+  box-shadow: 12px 8px black;
+}
+
+.player-info {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5%;
+  margin-right: 160px;
+  margin-bottom: 20px;
+}
+
+.image-container img {
+  margin-top: 10px;
+  width: 350px;
+  height: 228px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-evenly;
+}

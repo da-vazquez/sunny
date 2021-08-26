@@ -1,7 +1,8 @@
 import React from 'react';
+import './login.css';
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { login } from '../actions/UserActions'
+import { login } from '../../actions/UserActions'
 import {useFormik} from 'formik'
 
 
@@ -35,7 +36,7 @@ export default function LoginForm(res) {
     validate,
     onSubmit: async(values) => {
       await dispatch(login(values.username, values.password))
-      localStorage.setItem("user_id", res.data.user_id)
+      localStorage.setItem("user_id", res.data.id)
       history.push("/")
     }}
   )
@@ -44,8 +45,8 @@ export default function LoginForm(res) {
 return (
   <div className="login-container">
     <form className='form' onSubmit={formik.handleSubmit}>
-      <h1 style={{marginBottom: "1em"}}>Login</h1>
-      <label htmlFor='username'>
+      <h1 style={{marginBottom: "1em", color: "white"}}>Login</h1>
+      <label htmlFor='username' style={{color: 'white'}}>
         Username:
           <input 
             name='username'
@@ -56,7 +57,7 @@ return (
             required/>
       </label>
         <br/>
-      <label>
+      <label htmlFor='password' style={{color: 'white'}}>
         Password:
           <input
             name='password'

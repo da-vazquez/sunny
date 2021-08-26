@@ -1,0 +1,96 @@
+.hero-container {
+  display: flex;
+  height: 35em;
+  width: 90%;
+  margin: 0 auto;  
+  margin-top: 2em;
+}
+
+.hero-section-img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://images.actionnetwork.com/1200x675/blog/2021/05/GettyImages-1233110032-scaled.jpg");
+  filter: brightness(90%);
+  width: 60%;
+  text-align: right;
+}
+
+.hero-section-sidebar-container {
+  background-color: black;
+  color: white;
+  font-family: inter;
+  width: 40%;
+}
+
+.hero-section-sidebar-title {
+  text-align: center;
+  margin-bottom: 2em;
+  margin-top: 2em;
+  font-family: sans-serif;
+}
+
+.hero-section-sidebar-links {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.5em;
+  font-family: sans-serif;
+  
+}
+
+.hero-main-title p {
+  color: white;
+  margin-left: 1.4em;
+  font-size: 1.9em;
+  text-align: left;
+  margin-top: 2%;
+  font-family: sans-serif;
+  font-weight: 800;
+}
+
+.sidebar-box {
+  position: relative;
+  display: flex;
+  border: 1px solid blue;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 50%;
+  height: 11.6em;
+}
+
+.main-container {
+  display: grid;
+  grid-template-areas: 
+  "sidebar-left main-section sidebar-right";
+  grid-template-columns: .5fr 1fr .5fr;
+  grid-template-rows: 1fr;
+  width: 90%;
+  height: 40vh;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.main-section {
+  grid-area: "main-section";
+  border: 1px solid black;
+  width: 100%;
+}
+
+.sidebar-left {
+  grid-area: "sidebar-left";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: "sidebar-left";
+  border: 1px solid black;
+  background-color: white;
+}
+
+.sidebar-right {
+  grid-area: "sidebar-right";
+  border: 1px solid black;
+  width: 100%;
+}

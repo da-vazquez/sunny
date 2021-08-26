@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
+import './community.css' 
 import cn from "classnames";
 import { useDispatch, useSelector } from 'react-redux'
-import { newPost } from '../actions/UserActions';
+import { newPost } from '../../actions/UserActions';
 import Spinner from 'react-bootstrap/Spinner'
-import useDynamicHeightField from "./useDynamicHeightField";
-import "../App.css";
-import axiosWithAuth from "../utils/axiosWithAuth";
-import PostsCard from "./Posts";
+import useDynamicHeightField from "../useDynamicHeightField";
+import axiosWithAuth from "../../utils/axiosWithAuth";
+import PostsCard from "../Posts/Posts";
+import RenderPostCard from "../Posts/RenderPostCard";
 
 
 const INITIAL_HEIGHT = 50;
@@ -111,12 +112,14 @@ export default function CommentBox() {
     
     <div className='all-posts'>
       {posts.map(res => (
+        <div className='all-posts-cards'>
         <PostsCard
           key={res.post_id}
           username= {res.username}
           body= {res.body}
           number_likes= {res.number_likes}
           />
+        </div>
       ))
       }
     </div>

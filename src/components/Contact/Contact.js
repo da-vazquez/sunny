@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './contact.css';
 import Spinner from 'react-bootstrap/Spinner'
 
 const ContactForm = () => {
@@ -25,26 +26,27 @@ const ContactForm = () => {
     setSentStyle(true);
     let result = await response.json();
     console.log(result.status)
-  };
+  }
+
   return (
     <form className='contact-container' onSubmit={handleSubmit}>
       <div>
-        <h1 style={{marginBottom: "1em"}}>Contact Us</h1>
-        <label htmlFor="name">Name:</label>
+        <h1 style={{marginBottom: "1em", color: "white"}}>Contact Us</h1>
+        <label htmlFor="name" style={{color: "white"}}>Name:</label>
         <input type="text" style={{width: '80%', marginBottom: '1em', marginLeft: '1em', padding: '.5em'}} id="name" required />
       </div>
       <div>
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email" style={{color: "white"}}>Email:</label>
         <input type="email" style={{width: '80%', marginBottom: '1em', marginLeft: '1em',padding: '.5em'}} id="email" required />
       </div>
       <div>
-        <label htmlFor="message">Message:</label>
-        <input id="message" style={{width: '100%', marginBottom: '1em', padding: '.5em', height: "6em", marginLeft: '0.1em'}}  required />
+        <label htmlFor="message" style={{color: "white"}}>Message:</label>
+        <input id="message" style={{width: '80%', marginBottom: '1em', marginLeft: '.5em', padding: '.5em', height: "5em", }}  required />
       </div>
-      {sentStyle ? <button style={{backgroundColor: 'green'}}className='login-button' type="submit">{status}</button>
-      : <button className='login-button' type="submit">{status}</button> }
+      {sentStyle ? <button style={{backgroundColor: 'black'}}className='login-button' type="submit">{status}</button>
+      : <button className='contact-button' type="submit">{status}</button> }
     </form>
-  );
-};
+  )
+}
 
 export default ContactForm;

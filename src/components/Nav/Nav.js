@@ -1,8 +1,9 @@
 import React from 'react';
+import "./nav.css"
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import {logout} from "../actions/UserActions"
-import {CustomH3, UserInfo} from './Styled'
+import {logout} from "../../actions/UserActions"
+import {CustomH3, UserInfo} from '../Styled'
 
 
 

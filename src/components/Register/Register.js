@@ -1,7 +1,8 @@
 import React from 'react';
+import './register.css'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { register } from '../actions/UserActions'
+import { register } from '../../actions/UserActions'
 
 import { useFormik } from 'formik'
 
@@ -48,13 +49,12 @@ export default function RegisterForm() {
   }}
   )
 
-
   return (
-  <div>
+    <div>
       <div className="registration-container">
         <form className='form' onSubmit={formik.handleSubmit}>
-          <h1 style={{marginBottom: "1em"}}>Create Account</h1>
-            <label>
+          <h1 style={{marginBottom: "1em", color: "white"}}>Create Account</h1>
+            <label htmlFor="username" style={{color: 'white'}}>
               Username:
               <input 
                 name='username'
@@ -66,7 +66,7 @@ export default function RegisterForm() {
                 required/>
             </label>
               <br/>
-            <label>
+            <label htmlFor="password" style={{color: 'white'}}>
               Password:
               <input
                 name='password'
@@ -78,11 +78,12 @@ export default function RegisterForm() {
                 required/>
            </label>
               <br/>
-           <label>
+           <label htmlFor="tos" style={{color: 'white'}}>
               Terms
               <input
                 name='tos'
                 type='checkbox'
+                style={{marginLeft: '1em'}}
                 value={formik.values.tos}
                 onChange={formik.handleChange}
                 required
@@ -91,9 +92,9 @@ export default function RegisterForm() {
               <br/>
             <button className='login-button'>Submit</button>
               <br/>
-        {formik.errors.username ? <div style={{color:'red'}}>{formik.errors.username}</div> : null}
-        {formik.errors.password ? <div style={{color: 'red'}}>{formik.errors.password}</div> : null}
-        {formik.errors.tos ? <div style={{color: 'red'}}>{formik.errors.tos}</div> : null}
+        {formik.errors.username ? <div style={{color:'orange'}}>{formik.errors.username}</div> : null}
+        {formik.errors.password ? <div style={{color: 'orange'}}>{formik.errors.password}</div> : null}
+        {formik.errors.tos ? <div style={{color: 'orange'}}>{formik.errors.tos}</div> : null}
           </form>
       </div>
     </div>
