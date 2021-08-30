@@ -38,3 +38,27 @@
   cursor: pointer;
   text-decoration: none;
 }
+
+.contact-container h1 {
+  margin-bottom: 1em;
+  color: white;
+}
+
+.contact-container, #name, #email, #message {
+  color: white;
+}
+
+.primary-contact {
+  width: 80%;
+  margin-bottom: 1em;
+  margin-left: 1em;
+  padding: 0.5em;
+}
+
+.secondary-contact {
+  width: 80%;
+  margin-bottom: 1em;
+  margin-left: .5em;
+  padding: .5em;
+  height: 5em;
+}

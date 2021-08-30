@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -8,21 +7,10 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 
-const useStyles = makeStyles({
-  root: {
-    width: 250,
-    height: 200
-  },
-  media: {
-    height: 150
-  },
-});
-
 export default function PostsCard(props) {
-  const classes = useStyles();
-
+ 
   return (
-    <Card style={{width: "600px", height: "200px", border: "3px solid black", padding: "20px", borderRadius: "15px"}}>
+    <Card className="posts-container" style={{width: "600px", height: "200px", border: "3px solid black", padding: "20px", borderRadius: "15px"}}>
       <CardActionArea>
         <CardContent>
           <Typography style={{color: "black", fontSize: "20px", textTransform: "uppercase", fontWeight: 800, marginBottom: '10px'}}>

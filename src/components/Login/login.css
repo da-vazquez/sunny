@@ -56,6 +56,11 @@
   font-weight: bold;
 }
 
+.login-container h1 {
+  margin-bottom: 1em;
+  color: white;
+}
+
 input {
   margin: 0 auto;
   padding: 5px;
@@ -63,3 +68,12 @@ input {
   border-radius: 5px;
 }
 
+.login-container, #username, #password {
+  color: white;
+}
+
+.primary {
+  width: 80%;
+  margin-bottom: 1em;
+  padding: .5em;
+}

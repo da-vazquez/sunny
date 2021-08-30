@@ -1,5 +1,12 @@
 import styled from 'styled-components'
 
+export const PostsContainer = styled.div`
+  width: 600px;
+  height: 200px;
+  border: 3px solid black;
+  padding: 20px;
+  border-radius: 15px;  
+  `
 export const CustomButton = styled.button`
   display: inline-block;
   font-size: 0.8em;

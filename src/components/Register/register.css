@@ -29,3 +29,22 @@ input {
   margin-top: 20px;
   margin-bottom: 50px;
 } 
+
+.registration-container h1 {
+  margin-bottom: 1em;
+  color: white;
+}
+
+.registration-container, #username, #password, #tos {
+  color: white;
+}
+
+.input-primary {
+  width: 80%;
+  margin-bottom: 1em;
+  padding: .5em;
+}
+
+.input-secondary {
+  margin-left: 1em;
+}

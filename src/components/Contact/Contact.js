@@ -31,17 +31,17 @@ const ContactForm = () => {
   return (
     <form className='contact-container' onSubmit={handleSubmit}>
       <div>
-        <h1 style={{marginBottom: "1em", color: "white"}}>Contact Us</h1>
-        <label htmlFor="name" style={{color: "white"}}>Name:</label>
-        <input type="text" style={{width: '80%', marginBottom: '1em', marginLeft: '1em', padding: '.5em'}} id="name" required />
+        <h1>Contact Us</h1>
+        <label htmlFor="name">Name:</label>
+        <input className="primary-contact" type="text" id="name" required />
       </div>
       <div>
-        <label htmlFor="email" style={{color: "white"}}>Email:</label>
-        <input type="email" style={{width: '80%', marginBottom: '1em', marginLeft: '1em',padding: '.5em'}} id="email" required />
+        <label htmlFor="email">Email:</label>
+        <input className="primary-contact" type="email" id="email" required />
       </div>
       <div>
-        <label htmlFor="message" style={{color: "white"}}>Message:</label>
-        <input id="message" style={{width: '80%', marginBottom: '1em', marginLeft: '.5em', padding: '.5em', height: "5em", }}  required />
+        <label htmlFor="message">Message:</label>
+        <input className="secondary-contact" id="message" required />
       </div>
       {sentStyle ? <button style={{backgroundColor: 'black'}}className='login-button' type="submit">{status}</button>
       : <button className='contact-button' type="submit">{status}</button> }

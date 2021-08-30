@@ -2,7 +2,7 @@ import React from 'react';
 import "./nav.css"
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import {logout} from "../../actions/UserActions"
+import {logout} from "../../state/actions/UserActions"
 import {CustomH3, UserInfo} from '../Styled'
 
 
@@ -25,7 +25,7 @@ return (
     <CustomH3>sunny times</CustomH3>
     <div className='nav-btns'>
       <Link to= '/'>
-        <button>Home</button>
+        <button>News</button>
         </Link>
 
       <Link to= '/schedule'>

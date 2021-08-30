@@ -2,7 +2,7 @@ import React from 'react';
 import './login.css';
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { login } from '../../actions/UserActions'
+import { login } from '../../state/actions/UserActions'
 import {useFormik} from 'formik'
 
 
@@ -45,26 +45,26 @@ export default function LoginForm(res) {
 return (
   <div className="login-container">
     <form className='form' onSubmit={formik.handleSubmit}>
-      <h1 style={{marginBottom: "1em", color: "white"}}>Login</h1>
-      <label htmlFor='username' style={{color: 'white'}}>
+      <h1>Login</h1>
+      <label htmlFor='username'>
         Username:
           <input 
+            className="primary"
             name='username'
             type='text'
             value={formik.values.username}
             onChange={formik.handleChange}
-            style={{width: '80%', marginBottom: '1em', padding: '.5em'}}
             required/>
       </label>
         <br/>
-      <label htmlFor='password' style={{color: 'white'}}>
+      <label htmlFor='password'>
         Password:
           <input
+            className="primary"
             name='password'
             type='password'
             value={formik.values.password}
             onChange={formik.handleChange}
-            style={{width: '80%', marginBottom: '1em', padding: '.5em'}}
             required/>
       </label>
             <br/>

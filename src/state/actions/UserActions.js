@@ -1,6 +1,5 @@
-import axiosWithAuth from "../utils/axiosWithAuth"
+import axiosWithAuth from "../../utils/axiosWithAuth"
 import * as userActions from "../constants/userConstants"
-
 
 
 export const register = (username, password) => (dispatch) => {
@@ -38,22 +37,6 @@ export const login = (username, password) => (dispatch) => {
       })
     }
 
-export const newPost = (body, user_id, username) => (dispatch) => {
-  dispatch({type: userActions.ADD_POST_REQUEST})
-    axiosWithAuth().post('/api/posts', {body, user_id, username})
-      .then(res => {
-        console.log(res)
-        return dispatch({type: userActions.ADD_POST_SUCCESS, payload: res.data})
-      })
-      .catch(err => {
-        dispatch({
-          type: userActions.ADD_POST_FAILURE,
-          payload:
-          err.response && err.response.message ?
-          err.response.message : err.message
-        })
-      })
-    }
 
 export const logout = () => (dispatch) => {
   dispatch({type: userActions.USER_LOGGED_OUT})

@@ -2,13 +2,11 @@ import React, { useState, useRef, useEffect } from "react";
 import './community.css' 
 import cn from "classnames";
 import { useDispatch, useSelector } from 'react-redux'
-import { newPost } from '../../actions/UserActions';
+import { newPost } from '../../state/actions/CommunityActions';
 import Spinner from 'react-bootstrap/Spinner'
 import useDynamicHeightField from "../useDynamicHeightField";
 import axiosWithAuth from "../../utils/axiosWithAuth";
 import PostsCard from "../Posts/Posts";
-import RenderPostCard from "../Posts/RenderPostCard";
-
 
 const INITIAL_HEIGHT = 50;
 
@@ -18,15 +16,21 @@ export default function CommentBox() {
   const [body, setBody] = useState("");
   const [status, setStatus] = useState("Submit");
   const [posts, setPosts] = useState([])
+
+  //redux initalization
   const dispatch = useDispatch()
+
+  //redux state used to obtain current user_id and username from redux store
   const userID = useSelector(state => state.login.user_id)
   const username = useSelector(state => state.login.username)
   
+  //stying the textarea dynamically
   const outerHeight = useRef(INITIAL_HEIGHT);
   const textRef = useRef(null);
   const containerRef = useRef(null);
   useDynamicHeightField(textRef, body);
 
+  //expands comment conainer when clicked
   const onExpand = () => {
     if (!isExpanded) {
       outerHeight.current = containerRef.current.scrollHeight;
@@ -60,7 +64,7 @@ export default function CommentBox() {
       .catch(err => {
         console.log(err, "couldn't load posts")
       })
-  }, [])
+  }, [status])
 
   return (
     <>
@@ -110,6 +114,7 @@ export default function CommentBox() {
       </form>
     </div>
     
+    {/* maps all posts currently in DB */}
     <div className='all-posts'>
       {posts.map(res => (
         <div className='all-posts-cards'>

@@ -1,12 +1,13 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import * as userReducer from './reducers/userReducer'
+import * as auth from './reducers/userReducer.js'
+import * as post from './reducers/communityReducer.js'
 
 
 const reducer = combineReducers({
-  login: userReducer.userLoginReducer,
-  register: userReducer.userRegisterReducer,
-  newPost: userReducer.userLoginReducer
+  login: auth.userLoginReducer,
+  register: auth.userRegisterReducer,
+  newPost: post.communityPostReducer
 })
 
 

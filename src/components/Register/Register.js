@@ -2,7 +2,7 @@ import React from 'react';
 import './register.css'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { register } from '../../actions/UserActions'
+import { register } from '../../state/actions/UserActions'
 
 import { useFormik } from 'formik'
 
@@ -53,37 +53,37 @@ export default function RegisterForm() {
     <div>
       <div className="registration-container">
         <form className='form' onSubmit={formik.handleSubmit}>
-          <h1 style={{marginBottom: "1em", color: "white"}}>Create Account</h1>
-            <label htmlFor="username" style={{color: 'white'}}>
+          <h1>Create Account</h1>
+            <label htmlFor="username">
               Username:
               <input 
+                className="input-primary"
                 name='username'
                 type='text'
                 onTouchStart={formik.touched}
                 value={formik.values.username}
                 onChange={formik.handleChange}
-                style={{width: '80%', marginBottom: '1em', padding: '.5em'}}
                 required/>
             </label>
               <br/>
-            <label htmlFor="password" style={{color: 'white'}}>
+            <label htmlFor="password">
               Password:
               <input
+                className="input-primary"
                 name='password'
                 type='password'
                 onTouchStart={formik.touched}
                 value={formik.values.password}
                 onChange={formik.handleChange}
-                style={{width: '80%', marginBottom: '1em', padding: '.5em'}}
                 required/>
            </label>
               <br/>
-           <label htmlFor="tos" style={{color: 'white'}}>
+           <label htmlFor="tos">
               Terms
               <input
+                className="input-secondary"
                 name='tos'
                 type='checkbox'
-                style={{marginLeft: '1em'}}
                 value={formik.values.tos}
                 onChange={formik.handleChange}
                 required
