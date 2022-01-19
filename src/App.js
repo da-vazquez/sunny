@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 //components
 import Nav from './components/Nav/Nav';
 import LoginForm from './components/Login/Login'
-import RegisterForm from './components/Register/Register'
 import News from './components/News/News'
 import CommentBox from './components/Community/Community'
 import CalendarContainer from './components/Calendar/Calendar';
@@ -32,7 +31,6 @@ const App = () => {
           <RosterCard player={player}/>
         </Route>
         <Route path='/login' component={LoginForm}/>
-        <Route path='/sign-up' component={RegisterForm}/>
         <Route path='/contact' component={ContactForm}/>
       </Switch>
     </div>
