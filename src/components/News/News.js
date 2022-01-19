@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axiosWithAuth from "../../utils/axiosWithAuth";
 import './news.css';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import NewsArticleMain from '../NewsArticle/NewsArticle';
@@ -6,53 +7,46 @@ import NewsArticleMain from '../NewsArticle/NewsArticle';
 import {Articles} from './NewsArticle'
 
 const News = () => {
+  const [main, setMain] = useState([])
   const [ article ] = Articles;
 
+  useEffect(() => {
+    axiosWithAuth().get('/api/articles')
+      .then(res => {
+        console.log("articles:", res.data)
+        setMain(res.data[0])
+        return res.data
+      })
+      .catch(err => {
+        console.log(err, "couldn't load posts")
+      })
+  }, [])
+
   return (
-    <div>
-    <div className='hero-container'>
-      <div className='hero-section-img'>
-        <div className='hero-main-title'>
-          <p>{article.title}</p>
-          </div>
-        </div>
-          <div className='hero-section-sidebar-container'>
-            <div className='hero-section-sidebar-links'>  
-              <div className='sidebar-box'>
-                <img className='sidebar-img' src={article.box1Img} alt='news'/>
-              <p>{article.article2}</p>
-            </div>
-            <div className='sidebar-box'>
-              <img className='sidebar-img' src={article.box2Img} alt='news'/>
-              <p>{article.article3}</p>
-          </div>
-            <div className='sidebar-box'>
-              <img className='sidebar-img' src={article.box3Img} alt='news'/> 
-              <p>{article.article4}</p>
-            </div>
-            <div className='sidebar-box'>
-              <img className='sidebar-img' src={article.box4Img} alt='news'/>
-              <p>{article.article5}</p>
-            </div>
-          </div>
-        </div>  
-    </div>
-  
-    <div className='main-container'>
-      <div className='sidebar-left'>
-        <TwitterTimelineEmbed
-          sourceType="profile"
-          screenName="Suns"
-          className="twitter-timeline"
-          options={{height: 420, width: 400 }}/>
-        </div>
-      <div className='main-section'>
-          <NewsArticleMain></NewsArticleMain>
+    <div className='news-container'>
+      <div className='main-article'>
+        <img id='main-img' src={main.image} alt='main article'/>
+        <p id="main-link">{main.title}</p>
       </div>
-        <div className='sidebar-right'>
-          <h3>Community Posts</h3>
+      
+      <div className='side-articles'>
+        <div className='article-1'>
+          <img className='img-1' src={article.box1Img} alt='main'/>
+          <p className='sidebar-link1'>{article.article2}</p>
+        </div>
+        <div className='article-2'>
+          <img className='img-2' src={article.box2Img} alt='main'/>
+          <p className='sidebar-link2'>{article.article3}</p>
+        </div>
+        <div className='article-3'>
+          <img className='img-3' src={article.box3Img} alt='main'/>
+          <p className='sidebar-link3'>{article.article4}</p>
+        </div>
+        <div className='article-4'>
+          <img className='img-4' src={article.box4Img} alt='main'/>
+          <p className='sidebar-link4'>{article.article5}</p>
+        </div>
       </div>
-    </div>
   </div>
 )}
 
