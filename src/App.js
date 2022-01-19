@@ -16,8 +16,8 @@ import ContactForm from './components/Contact/Contact'
 const roster = teamRoster;
 
 const App = () => {
-    const [player] = useState(roster)
-    console.log('player list', player)
+  const [player] = useState(roster)
+  //pull this data from api later
   
   return (
     <Router>
