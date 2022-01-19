@@ -5,7 +5,7 @@ const axiosWithAuth = () => {
   
   return axios.create({
     //update base url to API url
-    baseURL: "http://localhost:5000/",
+    baseURL: "http://localhost:4000/",
     headers: { Authorization: token }
   })
 }
