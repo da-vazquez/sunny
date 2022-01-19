@@ -1,32 +1,61 @@
 .nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
   background-color: black;
   color: white;
   width: 100%;
-  height: 60px;
+  height: 4em;
   font-weight: bold;
   position: sticky;
   top: 0px;
   z-index: 1;
   border: none;
+  grid-template-columns: 1fr 1fr .9fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 
+   "logo links user";
+}
+
+.nav-logo {
+  grid-area: logo;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: .8em;
 }
 
 .nav-btns {
+  grid-area: links;
   display: flex;
-  align-items: center;
+  justify-content: center;
   height: 100%;
-  margin-right: 3em;
   padding: 6px;
   background-color: black;
   color: white; 
+  font-size: .8em;
+}
+
+.nav-user {
+  grid-area: user;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 10px;
+  align-items: center;
+  font-size: .8em;
+}
+
+.nav-p {
+  grid-area: user;
+  display: flex;
+  text-align: center;
+  justify-content: flex-end;
+  margin-right: 10px;
+  align-items: center;
+  font-size: 1em;
 }
 
 .nav-btns button {
   height: 100%;
-  padding: 12px;
-  margin-right: 20px;
+  margin-right: 1em;
   background-color: transparent;
   border: none;
   color: white;
@@ -35,4 +64,20 @@
 
 .nav-btns button:hover {
   border-bottom: 3px solid rgb(123,8,238);
+}
+
+.nav-user-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.9em;
+  margin-right: 12px;
+}
+
+.nav-user-profile-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.9em;
+  margin-right: 12px;
 }
