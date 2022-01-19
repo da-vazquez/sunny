@@ -1,0 +1,31 @@
+.posts-thumbs {
+  position: relative;
+  top: 0px;
+}
+
+#arrow-up, #arrow-down {
+  font-size: 1.5em;
+  margin-right: 4px;
+}
+
+.posts-container {
+  position: relative;
+}
+
+.img-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60%;
+  border: 1px solid lightgrey;
+}
+
+.img-area img {
+  width: 100%;
+  height: 100%;
+}
+
+p {
+  font-size: 2em;
+}
