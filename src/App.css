@@ -1,7 +1,7 @@
 @import './Community.css';
 
 body {
-  background-color: grey;
+  background-color: black;
   background-repeat: no-repeat; 
 	background-position: center;
 	background-attachment: fixed;
@@ -33,13 +33,7 @@ font-family: 'proxima-nova';
 border-radius: 10px;
 }
 
-h5, p {
-color: white;
-}  
-  
-p {
-  font-size: 12px;
-}
+
 
 
 
