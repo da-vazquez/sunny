@@ -3,7 +3,7 @@
   flex-direction: column;
   height: 350px;
   margin: 0 auto;
-  color: black;
+  color: white;
   list-style-type: none;
   margin-bottom: 60px;
   margin-right: 5px;
@@ -36,4 +36,8 @@
 .stats {
   display: flex;
   justify-content: space-evenly;
+}
+
+p {
+  font-size: 10px;
 }
