@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import './community.css' 
 import cn from "classnames";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { newPost } from '../../state/actions/CommunityActions';
 import Spinner from 'react-bootstrap/Spinner'
 import useDynamicHeightField from "../useDynamicHeightField";
 import axiosWithAuth from "../../utils/axiosWithAuth";
 import PostsCard from "../Posts/Posts";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const INITIAL_HEIGHT = 50;
 
@@ -15,14 +16,22 @@ export default function CommentBox() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [body, setBody] = useState("");
   const [status, setStatus] = useState("Submit");
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
+  const { isAuthenticated, user, getIdTokenClaims } = useAuth0();
+
+  if (!isAuthenticated) {
+    console.log("user not authenticated to post in community")
+  
+    } else {
+      getIdTokenClaims().then(res => {
+        localStorage.setItem("idToken", res.__raw)
+        localStorage.setItem("isAuthenticated", isAuthenticated)
+      })
+    }
+  
 
   //redux initalization
   const dispatch = useDispatch()
-
-  //redux state used to obtain current user_id and username from redux store
-  const userID = useSelector(state => state.login.user_id)
-  const username = useSelector(state => state.login.username)
   
   //stying the textarea dynamically
   const outerHeight = useRef(INITIAL_HEIGHT);
@@ -50,10 +59,16 @@ export default function CommentBox() {
 
   const onSubmit = async(e) => {
     e.preventDefault()
-    await dispatch(newPost(body, userID, username))
-    setStatus(<Spinner animation="border" variant="primary" />)
-    setStatus("Post added!")
-    setBody("")
+    if (isAuthenticated) {
+      await dispatch(newPost(body, user.name))
+      setStatus(<Spinner animation="border" variant="primary" />)
+      setStatus("Post added!")
+      setBody("")
+    
+    } else {
+      setStatus("Please login first")
+      setBody("")
+    }
   };
 
   useEffect(() => {
@@ -77,57 +92,46 @@ export default function CommentBox() {
           collapsed: !isExpanded,
           modified: body.length > 0,
         })}
-        style={{
-          minHeight: isExpanded ? outerHeight.current : INITIAL_HEIGHT
-        }}
-      >
+        style={{minHeight: isExpanded ? outerHeight.current : INITIAL_HEIGHT}}>
         <div className="header">
+        {user ? 
           <div className="user">
-            <img className='comment-img'
-              src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"
-              alt="User avatar"
-            />
-            <span>{username}</span>
+            <img className='comment-img' src={user.picture} alt="User avatar"/>
+            <span>{user.nickname}</span>
           </div>
+          : null}
         </div>
-        <label htmlFor="comment">'What are your thoughts?'</label>
-        <textarea
-          ref={textRef}
-          onClick={onExpand}
-          onFocus={onExpand}
-          onChange={onChange}
-          className="comment-field"
-          placeholder="What are your hot takes?"
-          value={body}
-          name="body"
-          id="body"
-        />
-        <div className="actions">
-          <button type="button" className="cancel" onClick={onClose}>
-            Cancel
-          </button>
-          
-          <button type="submit" disabled={body.length < 1}>
-            {status}
-          </button>
-        </div>
-      </form>
-    </div>
-    
+          <label htmlFor="comment">'What are your thoughts?'</label>
+          <textarea
+            ref={textRef}
+            onClick={onExpand}
+            onFocus={onExpand}
+            onChange={onChange}
+            className="comment-field"
+            placeholder="What are your hot takes?"
+            value={body}
+            name="body"
+            id="body"/>
+          <div className="actions">
+            <button type="button" className="cancel" onClick={onClose}>Cancel</button>
+            <button type="submit" disabled={body.length < 1}>{status}</button>
+          </div>
+        </form>
+      </div>
+
     {/* maps all posts currently in DB */}
-    <div className='all-posts'>
-      {posts.map(res => (
-        <div className='all-posts-cards'>
-        <PostsCard
-          key={res.post_id}
-          username= {res.username}
-          body= {res.body}
-          number_likes= {res.number_likes}
-          />
-        </div>
-      ))
-      }
+      <div className='all-posts'>
+        {posts.map(res => (
+          <div className='all-posts-cards'>
+          <PostsCard
+            key={res.post_id}
+            username= {res.username}
+            body= {res.body}
+            number_likes= {res.number_likes}
+            number_dislikes= {res.number_dislikes}/>
+          </div>
+      ))}
     </div>
-    </>
+  </>
   );
 }

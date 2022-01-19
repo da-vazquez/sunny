@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 //components
 import Nav from './components/Nav/Nav';
 import LoginForm from './components/Login/Login'
-import RegisterForm from './components/Register/Register'
 import News from './components/News/News'
 import CommentBox from './components/Community/Community'
 import CalendarContainer from './components/Calendar/Calendar';
@@ -17,8 +16,8 @@ import ContactForm from './components/Contact/Contact'
 const roster = teamRoster;
 
 const App = () => {
-    const [player] = useState(roster)
-    console.log('player list', player)
+  const [player] = useState(roster)
+  //pull this data from api later
   
   return (
     <Router>
@@ -32,7 +31,6 @@ const App = () => {
           <RosterCard player={player}/>
         </Route>
         <Route path='/login' component={LoginForm}/>
-        <Route path='/sign-up' component={RegisterForm}/>
         <Route path='/contact' component={ContactForm}/>
       </Switch>
     </div>

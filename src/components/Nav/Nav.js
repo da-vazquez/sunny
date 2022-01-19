@@ -1,28 +1,18 @@
 import React from 'react';
 import "./nav.css"
 import { Link, useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux'
-import {logout} from "../../state/actions/UserActions"
 import {CustomH3, UserInfo} from '../Styled'
-
-
+import { useAuth0 } from "@auth0/auth0-react";
+import {BiBell, BiMessageDetail} from 'react-icons/bi'
+import {CgProfile} from 'react-icons/cg'
 
 const Nav = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const username = useSelector(state => state.login.username)
-  const loggedIn = useSelector(state => state.login.loggedIn)
-  console.log("user info:", username)
-  
-  function logggedOut() {
-    dispatch(logout())
-    history.push('/login')
-}
-  
+  const { user, isAuthenticated, logout } = useAuth0()
+  console.log("user_info:", user)
   
 return (
   <div className='nav'>
-    <CustomH3>sunny times</CustomH3>
+  <div className='nav-logo'><CustomH3>sunny times</CustomH3></div>
     <div className='nav-btns'>
       <Link to= '/'>
         <button>News</button>
@@ -40,25 +30,27 @@ return (
         <button>Roster</button>
         </Link>
 
-      {!loggedIn ?
-       <Link to= '/login'>
-        <button>Sign In</button>
-      </Link> : ""}
-
-      {!loggedIn ?  
-      <Link to= '/sign-up'>
-        <button>Register</button>
-        </Link> : ""}
-
       <Link to= '/contact'>
         <button>Contact</button>
         </Link>
       
-      {loggedIn ? 
-        <button onClick={logggedOut}>Sign Out</button> : ""}
+      {!isAuthenticated ?
+       <Link to= '/login'>
+        <button>Sign In</button>
+      </Link> : 
+        <button onClick={() => logout({ returnTo: window.location.origin })}>Sign Out</button>}
+        {/*move this to profile dropdown*/}
     </div>
-      {loggedIn ? 
-        <UserInfo>Welcome {username}!</UserInfo> : <UserInfo>Please login</UserInfo>}
+    {isAuthenticated ?
+    <div className='nav-user'>
+        <BiBell className='nav-user-icons'/>
+        <BiMessageDetail className='nav-user-icons'/>
+        <CgProfile className='nav-user-icons'/>
+        </div>
+         : 
+        <div className='nav-user'>
+         <UserInfo>Please login</UserInfo>
+      </div>}
     </div>
     
   )

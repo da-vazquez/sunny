@@ -31,14 +31,13 @@ export const CustomHeader = styled.h2`
   `
   
 export const CustomH3 = styled.h3`
-  color: rgb(123, 8, 238);
+  color: "white";
   margin-left: 1em; 
-  font-family: sans-serif; 
+  font-family: Segoe UI; 
   ::after {
     content: "🌞";
     margin-left: 5px;
-    font-size: 1.25em;
-    color: yellow;
+    font-size: 1em;
   }
   font-size: 1.5em;
   font-weight: 1000;
@@ -50,7 +49,7 @@ export const CustomH3 = styled.h3`
 
 export const UserInfo = styled.h5`
   color: white;
-  margin-right: 1.25em; 
+  margin-right: 3em; 
   font-family: sans-serif; 
   letter-spacing: 0.225em; 
   font-size: 1em;
